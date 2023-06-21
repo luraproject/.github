@@ -1,0 +1,27 @@
+name: Label Commenter
+
+on:
+  workflow_call:
+
+#on:
+#  issues:
+#    types: [labeled, unlabeled]
+#  pull_request_target:
+#    types: [labeled, unlabeled]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  comment:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Label Commenter
+        uses: peaceiris/actions-label-commenter@v1
+        #uses: peaceiris/actions-label-commenter@v2
+        #with:
+        #  config_file: https://github.com/krakendio/.github/blob/main/.github/label-commenter-config.yml
